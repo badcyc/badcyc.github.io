@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm(Java)," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="优先队列-堆的Java实现">
+<meta name="keywords" content="Algorithm(Java)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优先队列-堆(Java)">
+<meta property="og:url" content="http://yoursite.com/2018/04/15/优先队列-堆-Java/index.html">
+<meta property="og:site_name" content="陈一超的博客">
+<meta property="og:description" content="优先队列-堆的Java实现">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_1.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_2.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_3.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_4.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_5.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_6.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_7.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_8.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_9.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_10.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_11.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_12.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_13.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_14.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_15.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_16.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_17.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_18.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_19.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_20.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_21.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_22.png">
+<meta property="og:image" content="http://yoursite.com/images/Heap/heap_23.png">
+<meta property="og:updated_time" content="2018-04-16T08:26:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="优先队列-堆(Java)">
+<meta name="twitter:description" content="优先队列-堆的Java实现">
+<meta name="twitter:image" content="http://yoursite.com/images/Heap/heap_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/15/优先队列-堆-Java/"/>
+
+
+
+
+
+  <title>优先队列-堆(Java) | 陈一超的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2684333d7847434a7acb0f70b011650e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈一超的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">更新心情和感情</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/15/优先队列-堆-Java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈一超">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈一超的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">优先队列-堆(Java)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-15T22:35:51+08:00">
+                2018-04-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-16T16:26:02+08:00">
+                2018-04-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm(Java)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  优先队列-堆的Java实现
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="优先队列（堆）"><a href="#优先队列（堆）" class="headerlink" title="优先队列（堆）"></a>优先队列（堆）</h1><h2 id="二叉堆"><a href="#二叉堆" class="headerlink" title="二叉堆"></a>二叉堆</h2><h3 id="堆序性质"><a href="#堆序性质" class="headerlink" title="堆序性质"></a>堆序性质</h3><p>让操作快速执行的性质是堆序性质，由于我们想要快速找出最小元，因此最小元应该在根上。我们考虑任意子树也应该是一个堆，那么任意节点就应该小于它的所有后裔。</p>
+<h3 id="结构性质"><a href="#结构性质" class="headerlink" title="结构性质"></a>结构性质</h3><p>堆是一棵完全填满的二叉树，有可能的例外是在底层，底层上的元素从左到右填入，这样的树成为完全二叉树。一个重要的发现，因为完全二叉树这么有规律，所以它可以用一个数组表示而不需要用链。该数组有一个位置0：</p>
+<p><img src="/images/Heap/heap_1.png" alt="@一颗完全二叉树"></p>
+<p><img src="/images/Heap/heap_2.png" alt="heap_2"></p>
+<h3 id="基本的堆操作"><a href="#基本的堆操作" class="headerlink" title="基本的堆操作"></a>基本的堆操作</h3><h4 id="insert插入"><a href="#insert插入" class="headerlink" title="insert插入"></a>insert插入</h4><p>将一个元素<em>X</em>插入到堆中，我们运用一种策略叫做 <strong>上滤</strong>（percolate up)：新元素在堆中上滤直到找出正确的位置。过程如下图所示:</p>
+<p><img src="/images/Heap/heap_3.png" alt="heap_3"><img src="/images/Heap/heap_4.png" alt="heap_4"></p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(E x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (currentSize == array.length - <span class="number">1</span>)</span><br><span class="line">            enlargeArray(array.length * <span class="number">2</span> + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//percolate up</span></span><br><span class="line">        <span class="keyword">int</span> hole = ++currentSize;</span><br><span class="line">        <span class="keyword">for</span> (array[hole] = x; x.compareTo(array[hole]) &lt; <span class="number">0</span>; hole /= <span class="number">2</span>)</span><br><span class="line">            array[hole] = array[hole / <span class="number">2</span>];</span><br><span class="line">        array[hole] = x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="deleteMin-删除最小元"><a href="#deleteMin-删除最小元" class="headerlink" title="deleteMin(删除最小元)"></a>deleteMin(删除最小元)</h4><p>deleteMin以类似插入的方式处理，我们运用一种相反的策略叫做 <strong>下滤</strong>（percolate down)，删除的元素一直是在根处，所以需要向下移动空穴，最后只需将最后一个元素移动到空穴处。</p>
+<p><img src="/images/Heap/heap_5.png" alt="heap_5"></p>
+<p><img src="/images/Heap/heap_6.png" alt="heap_6"></p>
+<p><img src="/images/Heap/heap_7.png" alt="heap_7"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">deleteMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) <span class="keyword">throw</span> <span class="keyword">new</span> BufferUnderflowException();</span><br><span class="line">        E minItem = findMin();</span><br><span class="line">        array[<span class="number">1</span>] = array[currentSize--];</span><br><span class="line">        percolateDown(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> minItem;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">percolateDown</span><span class="params">(<span class="keyword">int</span> hole)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> child;</span><br><span class="line">        E temp = array[hole];</span><br><span class="line">        <span class="keyword">for</span> (; hole * <span class="number">2</span> &lt;= currentSize; hole = child) &#123;</span><br><span class="line">            child = hole * <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (child != currentSize &amp;&amp; array[child + <span class="number">1</span>].compareTo(array[child]) &lt; <span class="number">0</span>)</span><br><span class="line">                child++;</span><br><span class="line">            <span class="keyword">if</span> (array[child].compareTo(temp) &lt; <span class="number">0</span>)</span><br><span class="line">                array[hole] = array[child];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        array[hole] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="buildHeap-构建堆"><a href="#buildHeap-构建堆" class="headerlink" title="buildHeap(构建堆)"></a>buildHeap(构建堆)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BinaryHeap</span><span class="params">(E[] items)</span> </span>&#123;</span><br><span class="line">        currentSize = items.length;</span><br><span class="line">        array = (E[]) <span class="keyword">new</span> Comparable[(currentSize * <span class="number">2</span>) * <span class="number">11</span> / <span class="number">10</span>];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (E item : items)</span><br><span class="line">            array[i++] = item;</span><br><span class="line">        buildHeap();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">buildHeap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = currentSize / <span class="number">2</span>; i &gt; <span class="number">0</span>; i--)</span><br><span class="line">            percolateDown(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面用图来解释buildHeap()的具体过程：</p>
+<p><img src="/images/Heap/heap_8.png" alt="heap_8"></p>
+<p><img src="/images/Heap/heap_9.png" alt="heap_9"></p>
+<p><img src="/images/Heap/heap_10.png" alt="heap_10"></p>
+<p><img src="/images/Heap/heap_11.png" alt="heap_11"></p>
+<p><a href="https://github.com/badcyc/dataStructure/blob/avl/Heap/BinaryHeap.java" target="_blank" rel="noopener">BinaryHeap的github地址</a></p>
+<h2 id="d-堆"><a href="#d-堆" class="headerlink" title="d-堆"></a>d-堆</h2><p>d-堆是二叉堆的简单推广，它就像一个二叉堆，只是所有的节点都有d个儿子（因此，二叉堆是2-堆）</p>
+<p><img src="/images/Heap/heap_12.png" alt="heap_12"></p>
+<p>上图表示的是3-堆。d-堆要比二叉堆浅的多，它将<code>insert</code>操作的运行时间改进为<code>O( log~d N)</code>,然而对于大的deleteMin操作费时的多，因为虽然树是浅了，但必须找到d个儿子中最小者，会耗时。</p>
+<h2 id="左式堆（leftist-heap"><a href="#左式堆（leftist-heap" class="headerlink" title="左式堆（leftist heap)"></a>左式堆（leftist heap)</h2><p>设计一种堆结构像二叉树那样有效地支持合并操作而且只使用一个数组似乎很困难，所有支持有效合并的高级数据结构都需要使用链式数据结构。<br>左式堆 像二叉堆那样也具有结构性和有序性。左式堆和二叉堆唯一区别是：左式堆不是理想平衡的，而实际上趋向于非常不平衡的。</p>
+<h3 id="左式堆性质"><a href="#左式堆性质" class="headerlink" title="左式堆性质"></a>左式堆性质</h3><p>我们把任一节点X的零路径长npl（x）定义为从X到一个不具有两个儿子的节点的最短路径的长。因此具有0个或一个儿子的节点的npl为0，而npl（null）=-1。在树中，零路径长标记在树的节点内。</p>
+<p><strong>注意</strong> ，任意以节点的零路径长比它的个儿子节点的零路径长的最小值大1.这个结论也适用少于两个儿子的节点，因为null的零路径长是-1。</p>
+<p><img src="/images/Heap/heap_13.png" alt="heap_13"></p>
+<p><strong>左式堆的性质</strong>：对于堆中的每一个节点X，左儿子的零路径长至少与右儿子的零路径上相等。图中只有一棵树，即左边的那棵树满足此性质。这个性质实际上超出了它确保树不平衡的要求，因为他显然偏重于使树向左增加深度。确实有可能存在由左节点形成的长路径构成的树（而且实际上更便于合并操作）——因此，有名称左式堆。</p>
+<h3 id="左式堆操作"><a href="#左式堆操作" class="headerlink" title="左式堆操作"></a>左式堆操作</h3><p>对左式堆的基本操作是合并。注意插入只是合并的特殊情形，因为我们可以把插入看成是单节点堆与一个大的堆的merge。  注意，最小元素在根处，除数据、左引用和右引用所用空间外，每个节点还要有一个指示零路径的项。<br><code>merge</code> 操作，当有一个为空时，只需返回另外一个堆。否则合并另外一个堆：递归的将根值大的堆与根值小的堆的右子堆合并。</p>
+<p><img src="/images/Heap/heap_14.png" alt="heap_14"></p>
+<p><img src="/images/Heap/heap_15.png" alt="heap_15"></p>
+<p><img src="/images/Heap/heap_16.png" alt="heap_16"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(LeftistHeap&lt;E&gt; rhs)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>==rhs)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    root=merge(root,rhs.root);</span><br><span class="line">    rhs.root=<span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> LeftistNode&lt;E&gt; <span class="title">merge</span><span class="params">(LeftistNode&lt;E&gt; h1,LeftistNode&lt;E&gt; h2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (h1==<span class="keyword">null</span>)<span class="keyword">return</span> h2;</span><br><span class="line">    <span class="keyword">if</span> (h2==<span class="keyword">null</span>)<span class="keyword">return</span> h1;</span><br><span class="line">    <span class="keyword">if</span> (h1.element.compareTo(h2.element)&lt;<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> merge1(h1,h2);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> merge1(h2,h1);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> LeftistNode&lt;E&gt; <span class="title">merge1</span><span class="params">(LeftistNode&lt;E&gt; h1,LeftistNode&lt;E&gt; h2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (h1.left==<span class="keyword">null</span>)</span><br><span class="line">        h1.left=h2;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        h1.right=merge(h1.right,h2);</span><br><span class="line">        <span class="keyword">if</span> (h1.left.npl&lt;h1.right.npl)</span><br><span class="line">            swapChildren(h1);</span><br><span class="line">        h1.npl=h1.right.npl+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">swapChildren</span><span class="params">(LeftistNode&lt;E&gt; t)</span></span>&#123;</span><br><span class="line">    LeftistNode&lt;E&gt; tmp=t.left;</span><br><span class="line">    t.left=t.right;</span><br><span class="line">    t.right=tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>insert</code>操作略，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(E x)</span> </span>&#123;</span><br><span class="line">    root = merge(<span class="keyword">new</span> LeftistNode&lt;&gt;(x), root);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>deleteMin</code>操作比较简单，删除根节点后，直接合并左右堆。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">deleteMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isEmpty())</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> BufferUnderflowException();</span><br><span class="line">    E minItem = root.element;</span><br><span class="line">    root = merge(root.left, root.right);</span><br><span class="line">    <span class="keyword">return</span> minItem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/badcyc/dataStructure/blob/avl/Heap/LeftistHeap.java" target="_blank" rel="noopener">LeftistHeap的github地址</a></p>
+<h2 id="二项队列"><a href="#二项队列" class="headerlink" title="二项队列"></a>二项队列</h2><h3 id="二项队列结构"><a href="#二项队列结构" class="headerlink" title="二项队列结构"></a>二项队列结构</h3><p><strong>二项队列</strong> 与我们已经看到的所有优先队列的实现的区别在于，一个二项队列不是一棵堆序的树，而是堆序的树的集合，称为森林（forest）。每一棵堆序树都是有约束的形式，叫做二项树。每个高度上至多存在一棵二项树。高度为0的二项树是一棵单节点树；高度为K的二项树B<sub>k</sub> 通过将一棵二项树B<sub>k-1</sub>附接到另一颗二项树B<sub>k-1</sub>的根上而构成。<br><img src="/images/Heap/heap_17.png" alt="heap_17"><br><img src="/images/Heap/heap_18.png" alt="heap_18"></p>
+<p>从图上可以看到，二项树B<sub>k</sub> 由一个带有儿子B<sub>0</sub>, B<sub>1</sub>,…,B<sub>k-1</sub> 的根组成。高度为k的二项树恰好有2^k 个节点。</p>
+<h3 id="二项队列操作"><a href="#二项队列操作" class="headerlink" title="二项队列操作"></a>二项队列操作</h3><p>作为一个例子，我们通过依序插入1到7来构成一个二项队列。4的插入展现一种坏的情形。我们把4和B<sub>0</sub>合并，得到一棵新的高度为1的树。然后将该树与B<sub>1</sub>合并，得到一棵高度为2的树，它是新的优先队列。在插入7以后的下一次插入又是一个坏情形，需要3次树的合并操作。</p>
+<p><img src="/images/Heap/heap_19.png" alt="heap_19"></p>
+<p><img src="/images/Heap/heap_20.png" alt="heap_20"></p>
+<p><code>deleteMin</code> 可以通过首先找出一棵具有最小根的二项树来完成。令该树为B<sub>k</sub>，并另原始的优先队列为H。我们从H的树的森林中除去二项树B<sub>k</sub> ,形成新的二项树队列H’ 。再出去B<sub>k</sub>的根，得到一些二项树B<sub>0</sub>,B<sub>1</sub>,…,B<sub>k-1</sub>,它们共同形成优先队列H’‘。合并H‘和H’‘，操作结束。 对H<sub>3</sub>,执行一次deleteMin，如图6-46，最小根是12，因此我们得到图6-47和6-48中的两个优先队列H’和H‘’。合并H‘和H’‘得到的二项队列是最后答案，如图6-49</p>
+<p><img src="/images/Heap/heap_21.png" alt="heap_21"></p>
+<p><img src="/images/Heap/heap_22.png" alt="heap_22"></p>
+<h3 id="二项队列的实现"><a href="#二项队列的实现" class="headerlink" title="二项队列的实现"></a>二项队列的实现</h3><p>二项队列是二项树的数组。</p>
+<p>二项树的每一个节点将包含数据、第一个儿子以及右兄弟。二项树中的各个儿子以降秩次排列。</p>
+<p><img src="/images/Heap/heap_23.png" alt="heap_23"></p>
+<p><a href="https://github.com/badcyc/dataStructure/blob/avl/BinomialQueue/BinomialQueue.java" target="_blank" rel="noopener">github代码</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm-Java/" rel="tag"># Algorithm(Java)</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/12/树-Java/" rel="next" title="树(Java)">
+                <i class="fa fa-chevron-left"></i> 树(Java)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈一超" />
+          <p class="site-author-name" itemprop="name">陈一超</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#优先队列（堆）"><span class="nav-number">1.</span> <span class="nav-text">优先队列（堆）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉堆"><span class="nav-number">1.1.</span> <span class="nav-text">二叉堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#堆序性质"><span class="nav-number">1.1.1.</span> <span class="nav-text">堆序性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构性质"><span class="nav-number">1.1.2.</span> <span class="nav-text">结构性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本的堆操作"><span class="nav-number">1.1.3.</span> <span class="nav-text">基本的堆操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#insert插入"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">insert插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deleteMin-删除最小元"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">deleteMin(删除最小元)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buildHeap-构建堆"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">buildHeap(构建堆)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d-堆"><span class="nav-number">1.2.</span> <span class="nav-text">d-堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#左式堆（leftist-heap"><span class="nav-number">1.3.</span> <span class="nav-text">左式堆（leftist heap)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#左式堆性质"><span class="nav-number">1.3.1.</span> <span class="nav-text">左式堆性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#左式堆操作"><span class="nav-number">1.3.2.</span> <span class="nav-text">左式堆操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二项队列"><span class="nav-number">1.4.</span> <span class="nav-text">二项队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二项队列结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">二项队列结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二项队列操作"><span class="nav-number">1.4.2.</span> <span class="nav-text">二项队列操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二项队列的实现"><span class="nav-number">1.4.3.</span> <span class="nav-text">二项队列的实现</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈一超</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

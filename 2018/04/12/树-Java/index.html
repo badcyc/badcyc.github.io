@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm(Java)," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="树的Java实现">
+<meta name="keywords" content="Algorithm(Java)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树(Java)">
+<meta property="og:url" content="http://yoursite.com/2018/04/12/树-Java/index.html">
+<meta property="og:site_name" content="陈一超的博客">
+<meta property="og:description" content="树的Java实现">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/Tree/tree.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/unix_file_tanle.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/preorder_file_table.PNG">
+<meta property="og:image" content="http://yoursite.com/images/Tree/post_unix_file_table.PNG">
+<meta property="og:image" content="http://yoursite.com/images/Tree/expression.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/binary_remove_1.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/binary_remove_2.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/single_rotate.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_1.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_2.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_3.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_4.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_5.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_6.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_7.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_8.png">
+<meta property="og:image" content="http://yoursite.com/images/Tree/avl_10.png">
+<meta property="og:updated_time" content="2018-04-13T13:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树(Java)">
+<meta name="twitter:description" content="树的Java实现">
+<meta name="twitter:image" content="http://yoursite.com/images/Tree/tree.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/12/树-Java/"/>
+
+
+
+
+
+  <title>树(Java) | 陈一超的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2684333d7847434a7acb0f70b011650e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈一超的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">更新心情和感情</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/12/树-Java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈一超">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈一超的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">树(Java)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T19:40:32+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-13T21:28:14+08:00">
+                2018-04-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm(Java)</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  树的Java实现
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数据结构与算法分析"><a href="#数据结构与算法分析" class="headerlink" title="数据结构与算法分析"></a>数据结构与算法分析</h1><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><hr>
+<h3 id="树的定义（递归方式）"><a href="#树的定义（递归方式）" class="headerlink" title="树的定义（递归方式）"></a>树的定义（递归方式）</h3><h3 id="树的实现"><a href="#树的实现" class="headerlink" title="树的实现"></a>树的实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span></span>&#123;</span><br><span class="line">    Object element;</span><br><span class="line">    TreeNode firstChild;</span><br><span class="line">    TreeNode nextSibling;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/Tree/tree.png" alt="Alt text"></p>
+<h3 id="树的遍历"><a href="#树的遍历" class="headerlink" title="树的遍历"></a>树的遍历</h3><p><img src="/images/Tree/unix_file_tanle.png" alt="Alt text"></p>
+<h4 id="先序遍历（preorder-travelsal"><a href="#先序遍历（preorder-travelsal" class="headerlink" title="先序遍历（preorder travelsal)"></a>先序遍历（<code>preorder travelsal</code>)</h4><p>设我们想要列出目录中所有文件的名字。输出格式将是：深度为 d<sub>i</sub> 的文件将被 d <sub>i</sub> 次跳格（<code>tab</code>）缩进后打印其名。伪码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private void listAll(int depth) &#123;</span><br><span class="line">      printName(depth);</span><br><span class="line">      if (isDirectory) &#123;</span><br><span class="line">          for each file c in this directory( for each child)</span><br><span class="line">          c.listAll(depth + 1);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  public void listAll() &#123;</span><br><span class="line">      listAll(0);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这种策略叫做先序遍历（<code>preorder travelsal</code>)<br>展示如下：<br><img src="/images/Tree/preorder_file_table.PNG" alt="Alt text"></p>
+<h4 id="后序遍历（postorder-travelsal）"><a href="#后序遍历（postorder-travelsal）" class="headerlink" title="后序遍历（postorder travelsal）"></a>后序遍历（<code>postorder travelsal</code>）</h4><p>计算一个目录大小的伪码历程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> totalSize = sizeOfThisFile();</span><br><span class="line">        <span class="keyword">if</span> (isDirectory())</span><br><span class="line">            <span class="function"><span class="keyword">for</span> each file c in <span class="keyword">this</span> <span class="title">directory</span><span class="params">( <span class="keyword">for</span> each child)</span></span></span><br><span class="line"><span class="function">                totalSize +</span>= c.size();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> totalSize;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/Tree/post_unix_file_table.PNG" alt="Alt text"></p>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><hr>
+<h3 id="二叉树的实现"><a href="#二叉树的实现" class="headerlink" title="二叉树的实现"></a>二叉树的实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BinaryNode</span> </span>&#123;</span><br><span class="line">    Object element;   <span class="comment">//the data in the node</span></span><br><span class="line">    BinaryNode left;   <span class="comment">//Left child</span></span><br><span class="line">    BinaryNode right;  <span class="comment">//right child</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子：表达式树"><a href="#例子：表达式树" class="headerlink" title="例子：表达式树"></a>例子：表达式树</h3><p><img src="/images/Tree/expression.png" alt="@(a+b*c)+((d*e+f)*g)的表达式树"></p>
+<p>二叉树的主要用处之一是在编译器的设计领域</p>
+<h3 id="查找树ADT——二叉查找树"><a href="#查找树ADT——二叉查找树" class="headerlink" title="查找树ADT——二叉查找树"></a>查找树ADT——二叉查找树</h3><blockquote>
+<p>二叉查找树的性质是，对于树中的每个节点X，它的左子树中所有项的值小于X中的项，而它的右子树中所有项大于X中的项。</p>
+</blockquote>
+<h4 id="insert-方法"><a href="#insert-方法" class="headerlink" title="insert 方法"></a><code>insert</code> 方法</h4><p>在二叉查找树中 <code>insert</code> 方法必定会插在叶子节点上，利用递归的方式，将节点x插入到适当的子树中，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> BinaryNode&lt;E&gt; <span class="title">insert</span><span class="params">(E x, BinaryNode&lt;E&gt; t)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (t == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">new</span> BinaryNode&lt;&gt;(x, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> compareResult = x.compareTo(t.element);</span><br><span class="line">      <span class="keyword">if</span> (compareResult &lt; <span class="number">0</span>)</span><br><span class="line">          t.left = insert(x, t.left);</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (compareResult &gt; <span class="number">0</span>)</span><br><span class="line">          t.right = insert(x, t.right);</span><br><span class="line">      <span class="keyword">else</span> ;<span class="comment">//Duplicate;do nothing</span></span><br><span class="line">      <span class="keyword">return</span> t;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="remove-方法"><a href="#remove-方法" class="headerlink" title="remove 方法"></a><code>remove</code> 方法</h4><p>最困难的操作是 <code>remove</code>（删除）。</p>
+<ul>
+<li>如果是叶子节点，那么立即删除</li>
+<li>如果节点有一个儿子，该节点直接替换为这个儿子  <code>t = (t.left != null) ? t.left : t.right;</code></li>
+<li>如果节点有二个儿子。一般的删除策咯是用其右子树的最小的数据（用<code>findMin函数</code>找到）代替该节点的数据并递归地删除那个最小数据的节点。</li>
+</ul>
+<p><img src="/images/Tree/binary_remove_1.png" alt="@具有一个儿子的节点4删除前后情况"> <img src="/images/Tree/binary_remove_2.png" alt="@删除具有两个儿子的节点2前后的情况"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> BinaryNode&lt;E&gt; <span class="title">remove</span><span class="params">(E x, BinaryNode&lt;E&gt; t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (t == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> t;</span><br><span class="line">        <span class="keyword">int</span> compareResult = x.compareTo(t.element);</span><br><span class="line">        <span class="keyword">if</span> (compareResult &lt; <span class="number">0</span>)</span><br><span class="line">            t.left = remove(x, t.left);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (compareResult &gt; <span class="number">0</span>)</span><br><span class="line">            t.right = remove(x, t.right);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (t.left != <span class="keyword">null</span> &amp;&amp; t.right != <span class="keyword">null</span>) &#123;</span><br><span class="line">            t.element = findMin(t.right).element;</span><br><span class="line">            t.right = remove(t.element, t.right);  <span class="comment">//核心代码</span></span><br><span class="line">        &#125; <span class="keyword">else</span></span><br><span class="line">            t = (t.left != <span class="keyword">null</span>) ? t.left : t.right;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>上述的删除工作效率并不高，因为它沿该树进行两趟收索以查找和删除右子树中的最小的节点，很明显右子树的删除可以写一个特殊的 <code>removeMin</code> 方法改变这种效率。<br>如果删除的次数不多，通常使用的策咯是 <strong>懒惰删除</strong>(<code>lazy deletion</code>)：当一个元素要被删除时，它仍留在树中，而只是被标记为删除。这特别是在有重复项时很常用，因为此时记录出现频率数的域可以减1.如果树中的实际节点树和“被删除”的节点数相同，那么树的深度预计只上升一个小的常数，因此，存在一个与懒惰删除相关的非常小的时间损耗。再有，如果被删除的项是重新插入的，那么分配一个新单元的开销就避免了。</p>
+<p><a href="https://github.com/badcyc/dataStructure/blob/avl/Tree/BinarySearchTree.java" target="_blank" rel="noopener">二叉树github</a></p>
+<h3 id="AVL树"><a href="#AVL树" class="headerlink" title="AVL树"></a>AVL树</h3><h4 id="单旋转"><a href="#单旋转" class="headerlink" title="单旋转"></a>单旋转</h4><p><img src="/images/Tree/single_rotate.png" alt="@单旋转|center"></p>
+<p>下面 假设从初始的空AVL树开始插入关键字 3、2和1，然后依序插入4~7。在插入1时第一个问题出现，AVL性质在根处被破坏。我们在根与其左儿子之间实行单旋转修正这个问题。<br><img src="/images/Tree/avl_1.png" alt="center"><br>图中虚线连接的两个节点，它们是旋转的主体。下面我们插入关键字4的节点，这没有问题，但插入5会破坏在节点3处的AVL性质，通过单旋转将其改正。<br><img src="/images/Tree/avl_2.png" alt="center"><br>下面插入6，因为左边子树的高度为0而右子树的高度为2，因此在根处2和4之间实施一次单旋转<br><img src="/images/Tree/avl_3.png" alt="Alt text"><br>旋转结果使得2是4的一个儿子，而4原来的左子树变成节点2的新的右子树。下面插入一个关键字7，它导致另外的旋转。<br><img src="/images/Tree/avl_4.png" alt="Alt text"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> AvlNode&lt;E&gt; <span class="title">rotateWithLeftChild</span><span class="params">(AvlNode&lt;E&gt; k2)</span> </span>&#123;</span><br><span class="line">        AvlNode&lt;E&gt; lChild = k2.left;</span><br><span class="line">        k2.left = lChild.right;</span><br><span class="line">        lChild.right = k2;</span><br><span class="line">        k2.height = Math.max(height(k2.left), height(k2.right)) + <span class="number">1</span>;</span><br><span class="line">        lChild.height = Math.max(height(lChild.left), k2.height) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> lChild;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> AvlNode&lt;E&gt; <span class="title">rotateWithRightChild</span><span class="params">(AvlNode&lt;E&gt; k2)</span> </span>&#123;</span><br><span class="line">        AvlNode&lt;E&gt; rChild = k2.right;</span><br><span class="line">        k2.right = rChild.left;</span><br><span class="line">        rChild.left = k2;</span><br><span class="line">        k2.height = Math.max(height(k2.left), height(k2.right)) + <span class="number">1</span>;</span><br><span class="line">        rChild.height = Math.max(height(rChild.right), k2.height) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> rChild;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="双旋转"><a href="#双旋转" class="headerlink" title="双旋转"></a>双旋转</h4><p>单旋转对于某些情形并没有减低他的深度。这时需要双旋转。<br>继续前面的例子基础上以倒序插入关键字10~16，接着插入8，9。插入16简单<br>，并没有破坏性质，但插入15后会引起节点7处的高度不平衡。需要通过右-左旋转解决。<br><img src="/images/Tree/avl_5.png" alt="Alt text"><br>下面插入14，也需要一个双旋转。此时需要右-左旋转。<br><img src="/images/Tree/avl_6.png" alt="Alt text"><br>下面插入 13，那么会在根处产生一个不平衡。由于13不在4和7之间，因此一次单旋转就能完成修正工作。<br><img src="/images/Tree/avl_7.png" alt="Alt text"><br>插入12、11都需要单旋转结果如下<br><img src="/images/Tree/avl_8.png" alt="Alt text"><br>最后插入9演示双旋转的对称情形。<br><img src="/images/Tree/avl_10.png" alt="Alt text"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> AvlNode&lt;E&gt; <span class="title">doubleWithLeftChild</span><span class="params">(AvlNode&lt;E&gt; k3)</span> </span>&#123;</span><br><span class="line">       k3.left = rotateWithRightChild(k3.left);</span><br><span class="line">       <span class="keyword">return</span> rotateWithLeftChild(k3);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> AvlNode&lt;E&gt; <span class="title">doubleWithRightChild</span><span class="params">(AvlNode&lt;E&gt; k1)</span> </span>&#123;</span><br><span class="line">       k1.right = rotateWithLeftChild(k1.right);</span><br><span class="line">       <span class="keyword">return</span> rotateWithRightChild(k1);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="平衡树操作"><a href="#平衡树操作" class="headerlink" title="平衡树操作"></a>平衡树操作</h4><p>平衡的操作很简单，首先判断节点是否失去平衡（左子树与右子树的高度查大于<em>ALLOW_IMBLANCE = 1 </em> ，并判断其需要进行旋转的类型进行相应的旋转操作,最后不要忘记重新计算树的高度。操作很清晰</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> AvlNode&lt;E&gt; <span class="title">balance</span><span class="params">(AvlNode&lt;E&gt; t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (t == <span class="keyword">null</span>) <span class="keyword">return</span> t;</span><br><span class="line">        <span class="keyword">if</span> (height(t.left) - height(t.right) &gt; ALLOWED_IMBLANCE)</span><br><span class="line">            <span class="keyword">if</span> (height(t.left.left) &gt;= height(t.left.right))</span><br><span class="line">                t = rotateWithLeftChild(t);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                t = doubleWithLeftChild(t);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (height(t.right) - height(t.left) &gt; ALLOWED_IMBLANCE)</span><br><span class="line">            <span class="keyword">if</span> (height(t.right.right) &gt;= height(t.right.left))</span><br><span class="line">                t = rotateWithRightChild(t);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                t = doubleWithRightChild(t);</span><br><span class="line">        t.height = Math.max(height(t.left), height(t.right)) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h4><p>插入操作都是插入到节点，最主要的是插入后的调节平衡，需要从下向上进行调节平衡操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> AvlNode&lt;E&gt; <span class="title">insert</span><span class="params">(E x, AvlNode&lt;E&gt; t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (t==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> AvlNode&lt;&gt;(x,<span class="keyword">null</span>,<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">int</span> compareResult=x.compareTo(t.element);</span><br><span class="line">        <span class="keyword">if</span> (compareResult&gt;<span class="number">0</span>)</span><br><span class="line">            t=insert(x,t.right);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (compareResult&lt;<span class="number">0</span>)</span><br><span class="line">            t=insert(x,t.left);</span><br><span class="line">        <span class="keyword">else</span> ;</span><br><span class="line">        <span class="keyword">return</span> balance(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h4><p>删除操作最为复杂，首先找到要删除的节点，判断是否含有左右子树，若含有左右子树，通常取右子树的最小的节点接替本节点，需要调用findMin()函数,如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> AvlNode&lt;E&gt; <span class="title">findMin</span><span class="params">(AvlNode&lt;E&gt; t)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (t == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> t;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span> (t.left != <span class="keyword">null</span>) t = t.left;</span><br><span class="line">      <span class="keyword">return</span> t;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>当含有左子树，将右子树作为本节点。否则将左子树作为本节点（包括左右节点都不存在）。<br><code>t=(t.left!=null)?t.left:t.right;</code></p>
+<p><code>remove()</code>全部代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> AvlNode&lt;E&gt; <span class="title">remove</span><span class="params">(E x, AvlNode&lt;E&gt; t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (t==<span class="keyword">null</span>)<span class="keyword">return</span> t;</span><br><span class="line">        <span class="keyword">int</span> compareResult=x.compareTo(t.element);</span><br><span class="line">        <span class="keyword">if</span> (compareResult&gt;<span class="number">0</span>)</span><br><span class="line">            t=remove(x,t.right);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (compareResult&lt;<span class="number">0</span>)</span><br><span class="line">            t=remove(x,t.left);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (t.left!=<span class="keyword">null</span>&amp;&amp;t.right!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            t.element=findMin(t.right).element;</span><br><span class="line">            t.right=remove(t.element,t.right);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            t=(t.left!=<span class="keyword">null</span>)?t.left:t.right;</span><br><span class="line">        <span class="keyword">return</span> balance(t);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/badcyc/dataStructure/blob/avl/AVL/AvlTree.java" target="_blank" rel="noopener">AVL树的github代码</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm-Java/" rel="tag"># Algorithm(Java)</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/12/散列-Java/" rel="next" title="散列(Java)">
+                <i class="fa fa-chevron-left"></i> 散列(Java)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/15/优先队列-堆-Java/" rel="prev" title="优先队列-堆(Java)">
+                优先队列-堆(Java) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈一超" />
+          <p class="site-author-name" itemprop="name">陈一超</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构与算法分析"><span class="nav-number">1.</span> <span class="nav-text">数据结构与算法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">1.1.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#树的定义（递归方式）"><span class="nav-number">1.1.1.</span> <span class="nav-text">树的定义（递归方式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树的实现"><span class="nav-number">1.1.2.</span> <span class="nav-text">树的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树的遍历"><span class="nav-number">1.1.3.</span> <span class="nav-text">树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#先序遍历（preorder-travelsal"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">先序遍历（preorder travelsal)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后序遍历（postorder-travelsal）"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">后序遍历（postorder travelsal）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">1.2.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉树的实现"><span class="nav-number">1.2.1.</span> <span class="nav-text">二叉树的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子：表达式树"><span class="nav-number">1.2.2.</span> <span class="nav-text">例子：表达式树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找树ADT——二叉查找树"><span class="nav-number">1.2.3.</span> <span class="nav-text">查找树ADT——二叉查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#insert-方法"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">insert 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove-方法"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">remove 方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AVL树"><span class="nav-number">1.2.4.</span> <span class="nav-text">AVL树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单旋转"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">单旋转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双旋转"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">双旋转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平衡树操作"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">平衡树操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入操作"><span class="nav-number">1.2.4.4.</span> <span class="nav-text">插入操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除操作"><span class="nav-number">1.2.4.5.</span> <span class="nav-text">删除操作</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈一超</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
